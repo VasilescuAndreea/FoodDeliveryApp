@@ -18,6 +18,10 @@ public class Restaurants {
         this.id = userCounter;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public @NotNull String getName() {
         return name;
     }
