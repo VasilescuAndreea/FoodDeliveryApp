@@ -39,4 +39,15 @@ public class Orders {
     public Date getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "restaurant='" + restaurant + '\'' +
+                ", driver='" + driver + '\'' +
+                ", users='" + users + '\'' +
+                ", date=" + date +
+                ", id=" + id +
+                '}';
+    }
 }

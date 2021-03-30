@@ -10,6 +10,7 @@ public class Restaurants {
     protected String phoneNumber;
     private static int userCounter = 0;
 
+
     public Restaurants(@NotNull String name, String adress, String phoneNumber) {
         this.name = name;
         this.adress = adress;
@@ -44,5 +45,15 @@ public class Restaurants {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurants{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", adress='" + adress + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

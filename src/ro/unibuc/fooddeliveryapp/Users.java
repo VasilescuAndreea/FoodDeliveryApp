@@ -1,6 +1,5 @@
 package ro.unibuc.fooddeliveryapp;
 
-//Pentru NotNull
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
@@ -12,7 +11,6 @@ public class Users {
     protected final Date birthDate;
     protected String adress;
     private static int userCounter = 0;
-
 
     public Users(@NotNull String userName, Date birthDate, String adress) {
         this.userName = userName;
@@ -47,4 +45,13 @@ public class Users {
         return adress;
     }
 
+    @Override
+    public String toString() {
+        return "Users{" +
+                "userName='" + userName + '\'' +
+                ", id=" + id +
+                ", birthDate=" + birthDate +
+                ", adress='" + adress + '\'' +
+                '}';
+    }
 }
