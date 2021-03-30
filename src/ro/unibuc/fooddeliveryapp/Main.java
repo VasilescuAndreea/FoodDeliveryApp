@@ -30,17 +30,17 @@ public class Main {
 
             if(foo == 5)
             {
-                interogations.getOrdersById(in.nextInt());
+                System.out.println(interogations.getOrdersById(in.nextInt()));
             }
 
             if(foo == 6)
             {
-                interogations.getRestaurantsById(in.nextInt());
+                System.out.println(interogations.getRestaurantsById(in.nextInt()));
             }
 
             if(foo == 7)
             {
-                interogations.getUser(in.nextInt());
+                System.out.println(interogations.getUser(in.nextInt()));
             }
         }
     }
