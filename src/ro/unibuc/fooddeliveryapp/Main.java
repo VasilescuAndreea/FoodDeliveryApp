@@ -22,50 +22,68 @@ public class Main {
 
         while (foo > 0) {
             try {
-                if (foo == 1) {
-                    System.out.println("You choose to add a driver");
-                    interogations.addDrivers(in);
-                }
-                else if (foo == 2) {
-                    System.out.println("You choose to add an order");
-                    interogations.addOrders(in);
-                }
-                else if (foo == 3) {
-                    System.out.println("You choose to add a restaurant");
-                    interogations.addRestaurant(in);
-                }
-                else if (foo == 4) {
-                    System.out.println("You choose to add an user");
-                    interogations.addUsers(in);
-                }
-                else if (foo == 5) {
-                    System.out.println("Write order number");
-                    System.out.println(interogations.getOrdersById(in.nextInt()).toString());
-                }
-                else if (foo == 6) {
-                    System.out.println("Write restaurant ID ");
-                    System.out.println(interogations.getRestaurantsById(in.nextInt()).toString());
-                }
-                else if (foo == 7) {
-                    System.out.println("Write user ID ");
-                    System.out.println(interogations.getUser(in.nextInt()).toString());
-                }
-                else if (foo == 8) {
-                    System.out.println("The available restaurants are");
-                    System.out.println(Admin.restaurants.toString());
-                }
-                else if (foo == 9) {
-                    System.out.println("All users");
-                    System.out.println(Admin.users.toString());
-                }
-                else if (foo == 10) {
-                    System.out.println("All orders");
-                    System.out.println(Admin.orders.toString());
+                switch (foo) {
+                    case 1:
+                        System.out.println("You choose to add a driver");
+                        interogations.addDrivers(in);
+                        interogations.case1();
+                        break;
+
+                    case 2:
+                        System.out.println("You choose to add an order");
+                        interogations.addOrders(in);
+                        interogations.case2();
+                        break;
+                    case 3:
+                        System.out.println("You choose to add a restaurant");
+                        interogations.addRestaurant(in);
+                        interogations.case3();
+                        break;
+                    case 4:
+                        System.out.println("You choose to add an user");
+                        interogations.addUsers(in);
+                        interogations.case4();
+                        break;
+                    case 5:
+                        System.out.println("Write order number");
+                        System.out.println(interogations.getOrdersById(in.nextInt()).toString());
+                        interogations.case5();
+                        break;
+                    case 6:
+                        System.out.println("Write restaurant ID ");
+                        System.out.println(interogations.getRestaurantsById(in.nextInt()).toString());
+                        interogations.case6();
+                        break;
+                    case 7:
+                        System.out.println("Write user ID ");
+                        System.out.println(interogations.getUser(in.nextInt()).toString());
+                        interogations.case7();
+                        break;
+                    case 8:
+                        System.out.println("The available restaurants are");
+                        System.out.println(Admin.restaurants.toString());
+                        interogations.case8();
+                        break;
+                    case 9:
+                        System.out.println("All users");
+                        System.out.println(Admin.users.toString());
+                        interogations.case9();
+                        break;
+                    case 10:
+                        System.out.println("All orders");
+                        System.out.println(Admin.orders.toString());
+                        interogations.case10();
+                        break;
+                    default:
+                        System.out.println("The option is invalid!");
+                        break;
                 }
             } catch (Exception e){
-                System.out.println(e.toString());
+                e.printStackTrace();
             }
+            System.out.println("Type your option");
             foo = in.nextInt();
         }
+        System.out.println("Have a nice day!");
     }
 }
