@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/Drivers.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Timestamp.csv">
           <value>
             <Attribute>
@@ -10,45 +17,10 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/src/ro/unibuc/fooddeliveryapp/Clients.csv">
+        <entry key="/Users.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/src/ro/unibuc/fooddeliveryapp/Drivers.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value=";" />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/src/ro/unibuc/fooddeliveryapp/Orders.CSV">
-          <value>
-            <Attribute>
-              <option name="separator" value=";" />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/src/ro/unibuc/fooddeliveryapp/Restaurants.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value=";" />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/src/ro/unibuc/fooddeliveryapp/Timestamp.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/src/ro/unibuc/fooddeliveryapp/Users.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value=";" />
             </Attribute>
           </value>
         </entry>

@@ -29,7 +29,7 @@ public class Users {
         this.birthDate = birthDate;
         this.adress = adress;
         this.id = id;
-        userCounter = max(userCounter, id + 1);
+        userCounter = max(userCounter, id );
     }
 
 
