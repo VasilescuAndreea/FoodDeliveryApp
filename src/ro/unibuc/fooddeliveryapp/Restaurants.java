@@ -2,12 +2,16 @@ package ro.unibuc.fooddeliveryapp;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Restaurants {
+import java.text.SimpleDateFormat;
+
+import static java.lang.Math.max;
+
+public final class Restaurants {
     @NotNull
-    protected String name;
-    protected final int id;
-    protected String adress;
-    protected String phoneNumber;
+    String name;
+    final int id;
+    String adress;
+    String phoneNumber;
     private static int userCounter = 0;
 
 
@@ -17,6 +21,14 @@ public class Restaurants {
         this.phoneNumber = phoneNumber;
         userCounter++;
         this.id = userCounter;
+    }
+
+    public Restaurants(final int id, @NotNull String name, String adress, String phoneNumber) {
+        this.name = name;
+        this.adress = adress;
+        this.phoneNumber = phoneNumber;
+        this.id = id;
+        userCounter = max(userCounter, id);
     }
 
     public int getId() {
@@ -55,5 +67,10 @@ public class Restaurants {
                 ", adress='" + adress + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
+    }
+
+    public String csvParser() {
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return id + ", " + name + ", " + adress + ", " + phoneNumber;
     }
 }

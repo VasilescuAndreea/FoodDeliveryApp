@@ -15,13 +15,13 @@ public interface Admin {
 
     Users getUser(int id);
 
-    void addOrders(Scanner in);
+    Orders addOrders(Scanner in);
 
-    void addDrivers(Scanner in);
+    Drivers addDrivers(Scanner in);
 
-    void addRestaurant(Scanner in);
+    Restaurants addRestaurant(Scanner in);
 
-    void addUsers(Scanner in);
+    Users addUsers(Scanner in);
 
 
     ArrayList<Orders> orders = new ArrayList<>();
@@ -31,6 +31,15 @@ public interface Admin {
     default Date parseDate(Scanner in) {
         try {
             String date = in.next();
+            //parsarea datei
+            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    static Date parseDate(String date) {
+        try {
             //parsarea datei
             return new SimpleDateFormat("yyyy-MM-dd").parse(date);
         } catch (ParseException e) {
