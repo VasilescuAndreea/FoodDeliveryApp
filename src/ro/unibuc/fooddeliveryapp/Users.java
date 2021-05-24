@@ -4,6 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.Date;
 
+import static java.lang.Math.max;
+
+import java.text.SimpleDateFormat;
+
 public class Users {
     @NotNull
     protected String userName;
@@ -18,6 +22,14 @@ public class Users {
         this.adress = adress;
         userCounter++;
         this.id = userCounter;
+    }
+
+    public Users(final int id, @NotNull String userName, Date birthDate, String adress) {
+        this.userName = userName;
+        this.birthDate = birthDate;
+        this.adress = adress;
+        this.id = id;
+        userCounter = max(userCounter, id );
     }
 
 
@@ -53,5 +65,10 @@ public class Users {
                 ", birthDate=" + birthDate +
                 ", adress='" + adress + '\'' +
                 '}';
+    }
+
+    public String csvParser() {
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return id + ", " + userName + ", " + simpleDateFormat.format(birthDate) + ", " + adress;
     }
 }

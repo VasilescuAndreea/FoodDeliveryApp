@@ -12,8 +12,13 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-
+        UsersList usersList = UsersList.getInstance();
+        DriversList driversList = DriversList.getInstance();
+        RestaurantsList restaurantsList = RestaurantsList.getInstance();
+        OrdersList ordersList = OrdersList.getInstance();
+        LoggingCsv loggingCsv = LoggingCsv.getInstance();
         Interogations interogations = new Interogations();
+
         System.out.println("To add a new driver please press 1");
         System.out.println("To place an order please press 2");
         System.out.println("To add a new restaurant please press 3");
@@ -32,60 +37,64 @@ public class Main {
                 switch (foo) {
                     case 1:
                         System.out.println("You choose to add a driver");
-                        interogations.addDrivers(in);
-                        interogations.case1();
+                        Drivers drivers = interogations.addDrivers(in);
+                        loggingCsv.case1();
+                        driversList.writeData(drivers);
                         break;
 
                     case 2:
                         System.out.println("You choose to add an order");
-                        interogations.addOrders(in);
-                        interogations.case2();
+                        Orders orders = interogations.addOrders(in);
+                        ordersList.writeData(orders);
+                        loggingCsv.case2();
                         break;
                     case 3:
                         System.out.println("You choose to add a restaurant");
-                        interogations.addRestaurant(in);
-                        interogations.case3();
+                        Restaurants restaurants = interogations.addRestaurant(in);
+                        restaurantsList.writeData(restaurants);
+                        loggingCsv.case3();
                         break;
                     case 4:
                         System.out.println("You choose to add an user");
-                        interogations.addUsers(in);
-                        interogations.case4();
+                        Users users = interogations.addUsers(in);
+                        usersList.writeData(users);
+                        loggingCsv.case4();
                         break;
                     case 5:
                         System.out.println("Write order number");
                         System.out.println(interogations.getOrdersById(in.nextInt()).toString());
-                        interogations.case5();
+                        loggingCsv.case5();
                         break;
                     case 6:
                         System.out.println("Write restaurant ID ");
                         System.out.println(interogations.getRestaurantsById(in.nextInt()).toString());
-                        interogations.case6();
+                        loggingCsv.case6();
                         break;
                     case 7:
                         System.out.println("Write user ID ");
                         System.out.println(interogations.getUser(in.nextInt()).toString());
-                        interogations.case7();
+                        loggingCsv.case7();
                         break;
                     case 8:
                         System.out.println("The available restaurants are");
                         System.out.println(Admin.restaurants.toString());
-                        interogations.case8();
+                        loggingCsv.case8();
                         break;
                     case 9:
                         System.out.println("All users");
                         System.out.println(Admin.users.toString());
-                        interogations.case9();
+                        loggingCsv.case9();
                         break;
                     case 10:
                         System.out.println("All orders");
                         System.out.println(Admin.orders.toString());
-                        interogations.case10();
+                        loggingCsv.case10();
                         break;
                     default:
                         System.out.println("The option is invalid!");
                         break;
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             System.out.println("Type your option or -1 to leave");
