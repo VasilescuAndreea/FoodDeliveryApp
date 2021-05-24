@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Scanner;
 
 public interface Admin {
@@ -31,8 +31,8 @@ public interface Admin {
     default Date parseDate(Scanner in) {
         try {
             String date = in.next();
-            //parsarea datei
-            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            java.util.Date d = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            return new Date(d.getTime());
         } catch (ParseException e) {
             return null;
         }

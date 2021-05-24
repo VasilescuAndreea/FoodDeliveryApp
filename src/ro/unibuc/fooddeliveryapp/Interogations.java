@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Scanner;
 
 public class Interogations implements Admin{
@@ -97,125 +97,6 @@ public class Interogations implements Admin{
         users.add(user);
     }
 
-    public void case1() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("New driver has been added: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case2() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("New order has been added: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case3() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("New restaurant has been added: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case4() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("New user has been added: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case5() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("Somebody asked to view their order: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case6() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("Somebody asked to view a specific restautant: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case7() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("Somebody asked to view informations of a specific user : " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case8() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("Somebody asked to all available restaurant: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case9() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("Somebody asked to view all users: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
-
-    public void case10() throws IOException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        File file = new File("Timestamp.csv");
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter writer = new BufferedWriter(fr);
-        writer.write("Somebody asked to view all orders: " + formatter.format(date));
-        writer.newLine();
-        writer.close();
-        fr.close();
-    }
 }
 
 

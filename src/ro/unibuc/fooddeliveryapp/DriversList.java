@@ -18,6 +18,7 @@ public class DriversList {
             }
         } catch (FileNotFoundException e) {
             //Some error logging
+            e.printStackTrace();
         }
         return content;
     }

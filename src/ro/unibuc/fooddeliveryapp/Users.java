@@ -2,7 +2,7 @@ package ro.unibuc.fooddeliveryapp;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Users {
     @NotNull

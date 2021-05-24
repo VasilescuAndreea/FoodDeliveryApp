@@ -1,9 +1,16 @@
 package ro.unibuc.fooddeliveryapp;
 
+import ro.unibuc.fooddeliveryapp.DataBase.DAODrivers;
+import ro.unibuc.fooddeliveryapp.DataBase.DAOOrders;
+import ro.unibuc.fooddeliveryapp.DataBase.DAORestaurants;
+import ro.unibuc.fooddeliveryapp.DataBase.DAOUsers;
+
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
         Scanner in = new Scanner(System.in);
 
         Interogations interogations = new Interogations();
@@ -81,9 +88,9 @@ public class Main {
             } catch (Exception e){
                 e.printStackTrace();
             }
-            System.out.println("Type your option");
+            System.out.println("Type your option or -1 to leave");
             foo = in.nextInt();
         }
-        System.out.println("Have a nice day!");
+        System.out.println(" Have a nice day! ");
     }
 }
