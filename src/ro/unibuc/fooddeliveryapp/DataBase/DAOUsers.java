@@ -1,5 +1,6 @@
 package ro.unibuc.fooddeliveryapp.DataBase;
 
+import ro.unibuc.fooddeliveryapp.Admin;
 import ro.unibuc.fooddeliveryapp.Drivers;
 import ro.unibuc.fooddeliveryapp.Restaurants;
 import ro.unibuc.fooddeliveryapp.Users;
@@ -24,6 +25,7 @@ public class DAOUsers {
             throwables.printStackTrace();
         }
     }
+
 
     private void createTable() {
         final String query = "CREATE TABLE IF NOT EXISTS Users (\n" +
@@ -52,14 +54,13 @@ public class DAOUsers {
     }
 
     public void read(){
-        List<Users> Users  = new ArrayList<>();
-        final String query = "SELECT * FROM Users";
+        final String query = "SELECT * FROM Users WHERE id NOT IN (SELECT d.id from Drivers d)";
         try{
             Statement statement = dbConnection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                Users.add(mapToUsers(resultSet));
+                Admin.users.add(mapToUsers(resultSet));
             }
         } catch (SQLException exception) {
             throw new RuntimeException("Something went wrong while tying to get all Users: ");
@@ -68,14 +69,15 @@ public class DAOUsers {
 
     public void write(Users users) {
 
-        final String query = "INSERT into Users(Id, BirthDay, Adress) VALUES(?,?,?)";
+        final String query = "INSERT into Users(Id, userName, BirthDate, Adress) VALUES(?,?,?,?)";
         try {
 
 
             PreparedStatement preparedStatement = dbConnection.prepareStatement(query, Statement.NO_GENERATED_KEYS);
             preparedStatement.setInt(1, users.getId());
-            preparedStatement.setDate(2, users.getBirthDate());
-            preparedStatement.setString(3, users.getAdress());
+            preparedStatement.setString(2, users.getUserName());
+            preparedStatement.setDate(3, users.getBirthDate());
+            preparedStatement.setString(4, users.getAdress());
             preparedStatement.execute();
 
         }catch (SQLException throwables) {

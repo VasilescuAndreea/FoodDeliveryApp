@@ -1,5 +1,6 @@
 package ro.unibuc.fooddeliveryapp.DataBase;
 
+import ro.unibuc.fooddeliveryapp.Admin;
 import ro.unibuc.fooddeliveryapp.Drivers;
 import ro.unibuc.fooddeliveryapp.Restaurants;
 import ro.unibuc.fooddeliveryapp.Users;
@@ -28,7 +29,7 @@ public class DAODrivers {
     private void createTable() {
         final String query = "CREATE TABLE IF NOT EXISTS Drivers (\n" +
                 "id INT PRIMARY KEY , \n" +
-                "mainVechicle VARCHAR(128) NOT NULL, \n" +
+                "mainVehicle VARCHAR(128) NOT NULL, \n" +
                 "FOREIGN KEY (id) references Users(id))";
         // Users pentru ca e numele tabelei din baza de date
         try {
@@ -52,14 +53,13 @@ public class DAODrivers {
     }
 
     public void read() {
-        List<Drivers> Drivers = new ArrayList<>();
-        final String query = "SELECT * FROM Drivers";
+        final String query = "SELECT u.id, u.userName, u.birthDate, u.adress, d.mainVehicle FROM Drivers d, Users u WHERE u.id = d.id";
         try {
             Statement statement = dbConnection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                Drivers.add(mapToDrivers(resultSet));
+                Admin.users.add(mapToDrivers(resultSet));
             }
         } catch (SQLException exception) {
             throw new RuntimeException("Something went wrong while tying to get all Drivers: ");
@@ -67,9 +67,10 @@ public class DAODrivers {
     }
 
     public void write(Drivers drivers) {
-        final String query = "INSERT into Drivers(Id, mainVehicle) VALUES(?,?)";
-        try {
 
+        final String query = "INSERT into Drivers(id, mainVehicle) VALUES(?,?)";
+        try {
+            DAOUsers.getDaoUsers().write(drivers);
             PreparedStatement preparedStatement = dbConnection.prepareStatement(query, Statement.NO_GENERATED_KEYS);
             preparedStatement.setInt(1, drivers.getId());
             preparedStatement.setString(2, drivers.getMainVehicle());

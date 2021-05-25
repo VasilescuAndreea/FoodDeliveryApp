@@ -1,5 +1,10 @@
 package ro.unibuc.fooddeliveryapp;
 
+import ro.unibuc.fooddeliveryapp.DataBase.DAODrivers;
+import ro.unibuc.fooddeliveryapp.DataBase.DAOOrders;
+import ro.unibuc.fooddeliveryapp.DataBase.DAORestaurants;
+import ro.unibuc.fooddeliveryapp.DataBase.DAOUsers;
+
 import javax.print.DocFlavor;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -50,6 +55,7 @@ public class Interogations implements Admin {
         Date date = parseDate(in);
 
         Orders order = new Orders(getRestaurantsById(restaurantId), (Drivers) getUser(driverId), getUser(userId), date);
+        DAOOrders.getDAOOrders().write(order);
         orders.add(order);
         return order;
     }
@@ -67,6 +73,7 @@ public class Interogations implements Admin {
         String permis = in.next();
 
         Drivers driver = new Drivers(username, birthDate, adress, permis);
+        DAODrivers.getDAODriver().write(driver);
         users.add(driver);
         return driver;
     }
@@ -82,6 +89,7 @@ public class Interogations implements Admin {
         String phoneNumber = in.next();
 
         Restaurants restaurant = new Restaurants(name, adress, phoneNumber);
+        DAORestaurants.getDaoRestaurants().write(restaurant);
         restaurants.add(restaurant);
         return restaurant;
     }
@@ -97,6 +105,7 @@ public class Interogations implements Admin {
         String adress = in.next();
 
         Users user = new Users(userName, birthDate, adress);
+        DAOUsers.getDaoUsers().write(user);
         users.add(user);
         return user;
     }

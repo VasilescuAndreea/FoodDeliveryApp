@@ -41,7 +41,8 @@ public interface Admin {
     static Date parseDate(String date) {
         try {
             //parsarea datei
-            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            java.util.Date d = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+            return new Date(d.getTime());
         } catch (ParseException e) {
             return null;
         }

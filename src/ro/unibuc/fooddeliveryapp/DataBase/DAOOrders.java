@@ -27,10 +27,12 @@ public class DAOOrders {
         final String query = "CREATE TABLE IF NOT EXISTS Orders (\n" +
                 "Id INT PRIMARY KEY , \n" +
                 "RestaurantID INT NOT NULL, \n" +
-                "UsersID INT NOT NULL, \n" +
+                "DriverID INT NOT NULL, \n" +
+                "UserID INT NOT NULL, \n" +
                 "Order_Date DATE NOT NULL, \n " +
                 "FOREIGN KEY (RestaurantID) references Restaurants(id),\n " +
-                "FOREIGN KEY(UsersID) references Users(id))";
+                "FOREIGN KEY (DriverID) references Drivers(id), \n" +
+                "FOREIGN KEY(UserID) references Users(id))";
         try  {
             Statement statement = dbConnection.createStatement();
             statement.execute(query);
@@ -47,7 +49,6 @@ public class DAOOrders {
     }
 
     private Orders mapToOrders(ResultSet resultSet) throws SQLException {
-        final String query = "SELECT * FROM Restaurants WHERE id = ?";
         Interogations interogations = new Interogations();
         Restaurants restaurants = (Restaurants) interogations.getRestaurantsById(resultSet.getInt(2));
         Drivers drivers = (Drivers) interogations.getUser(resultSet.getInt(3));
@@ -58,14 +59,13 @@ public class DAOOrders {
     }
 
     public void read(){
-        List<Orders> Orders  = new ArrayList<>();
-        final String query = "SELECT * FROM Orders";
+        final String query = "SELECT Id, RestaurantID, DriverID, UserID, Order_Date FROM Orders";
         try{
             Statement statement = dbConnection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                Orders.add(mapToOrders(resultSet));
+                Admin.orders.add(mapToOrders(resultSet));
             }
         } catch (SQLException exception) {
             throw new RuntimeException("Something went wrong while tying to get all Orders: ");
@@ -74,14 +74,15 @@ public class DAOOrders {
     }
 
     public void write(Orders orders) {
-        final String query = "INSERT into Orders(Id, Driver, User, Date ) VALUES(?,?,?,?)";
+        final String query = "INSERT into Orders(Id, RestaurantID, DriverID, UserID, Order_Date ) VALUES(?,?,?,?,?)";
         try {
 
             PreparedStatement preparedStatement = dbConnection.prepareStatement(query, Statement.NO_GENERATED_KEYS);
             preparedStatement.setInt(1, orders.getId());
-            preparedStatement.setInt(2, orders.getDriver().getId());
-            preparedStatement.setInt(3, orders.getUsers().getId());
-            preparedStatement.setDate(4, orders.getDate());
+            preparedStatement.setInt(2, orders.getRestaurant().getId());
+            preparedStatement.setInt(3, orders.getDriver().getId());
+            preparedStatement.setInt(4, orders.getUsers().getId());
+            preparedStatement.setDate(5, (Date) orders.getDate());
             preparedStatement.execute();
 
         } catch (SQLException throwables) {

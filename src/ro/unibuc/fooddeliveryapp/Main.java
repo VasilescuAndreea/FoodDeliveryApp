@@ -12,10 +12,14 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        UsersList usersList = UsersList.getInstance();
-        DriversList driversList = DriversList.getInstance();
-        RestaurantsList restaurantsList = RestaurantsList.getInstance();
-        OrdersList ordersList = OrdersList.getInstance();
+        DAOUsers daoUsers = DAOUsers.getDaoUsers();
+        daoUsers.read();
+        DAODrivers daoDrivers = DAODrivers.getDAODriver();
+        daoDrivers.read();
+        DAORestaurants daoRestaurants = DAORestaurants.getDaoRestaurants();
+        daoRestaurants.read();
+        DAOOrders daoOrders = DAOOrders.getDAOOrders();
+        daoOrders.read();
         LoggingCsv loggingCsv = LoggingCsv.getInstance();
         Interogations interogations = new Interogations();
 
@@ -39,25 +43,21 @@ public class Main {
                         System.out.println("You choose to add a driver");
                         Drivers drivers = interogations.addDrivers(in);
                         loggingCsv.case1();
-                        driversList.writeData(drivers);
                         break;
 
                     case 2:
                         System.out.println("You choose to add an order");
                         Orders orders = interogations.addOrders(in);
-                        ordersList.writeData(orders);
                         loggingCsv.case2();
                         break;
                     case 3:
                         System.out.println("You choose to add a restaurant");
                         Restaurants restaurants = interogations.addRestaurant(in);
-                        restaurantsList.writeData(restaurants);
                         loggingCsv.case3();
                         break;
                     case 4:
                         System.out.println("You choose to add an user");
                         Users users = interogations.addUsers(in);
-                        usersList.writeData(users);
                         loggingCsv.case4();
                         break;
                     case 5:

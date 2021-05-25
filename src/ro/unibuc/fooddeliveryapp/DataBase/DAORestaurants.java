@@ -1,5 +1,6 @@
 package ro.unibuc.fooddeliveryapp.DataBase;
 
+import ro.unibuc.fooddeliveryapp.Admin;
 import ro.unibuc.fooddeliveryapp.Drivers;
 import ro.unibuc.fooddeliveryapp.Restaurants;
 
@@ -26,10 +27,10 @@ public class DAORestaurants {
 
     private void createTable() {
         final String query = "CREATE TABLE IF NOT EXISTS Restaurants (\n" +
-                "id INT PRIMARY KEY , \n" +
+                "Id INT PRIMARY KEY , \n" +
                 "UserName VARCHAR(64) NOT NULL, \n" +
-                "adress VARCHAR(128) NOT NULL, \n"+
-                "phone INT(10) NOT NULL)";
+                "Adress VARCHAR(128) NOT NULL, \n"+
+                "PhoneNumber INT(10) NOT NULL)";
         try  {
             Statement statement = dbConnection.createStatement();
             statement.execute(query);
@@ -50,14 +51,13 @@ public class DAORestaurants {
     }
 
     public void read() {
-        List<Restaurants> Restaurants = new ArrayList<>();
         final String query = "SELECT * FROM Restaurants";
         try {
             Statement statement = dbConnection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                Restaurants.add(mapToRestaurants(resultSet));
+                Admin.restaurants.add(mapToRestaurants(resultSet));
             }
         } catch (SQLException exception) {
             throw new RuntimeException("Something went wrong while tying to get all Restaurants: ");
@@ -67,7 +67,7 @@ public class DAORestaurants {
 
     public void write(Restaurants restaurants) {
 
-        final String query = "INSERT into Restaurants(Id, Name, Adress, PhoneNumber) VALUES(?,?,?,?)";
+        final String query = "INSERT into Restaurants(Id, userName, Adress, PhoneNumber) VALUES(?,?,?,?)";
         try {
 
             PreparedStatement preparedStatement = dbConnection.prepareStatement(query, Statement.NO_GENERATED_KEYS);
